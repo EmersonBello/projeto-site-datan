@@ -1,3 +1,4 @@
+<html style="text-align: center;" backgraund-color="#e3e3e3">
 <?php
 
     $host = "localhost";
@@ -13,22 +14,7 @@
     }
     echo "Conexão bem-sucedida!";
     
-    $conn->$query = "INSERT INTO usuarios (id,nome, email, telefone, curso, identificacao_racial, evento) VALUES (auto_increment, '' , '', '', '', '', '')";
-    
-    // Preparar e vincular
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssssss", $nome, $email, $telefone, $curso, $identificacao_racial, $evento);
-    
-    // Executar a consulta
-    if ($stmt->execute()) {
-        echo "Novo registro criado com sucesso!";
-    } else {
-        echo "Erro: " . $stmt->error;
-    }
-
-    // Fechar a declaração
-    $stmt->close();
+    $conn->$query = "INSERT INTO usuario (id, nome, email, telefone, curso, identificacao_racial, evento) VALUES (auto_increment, '$_POST[nome]', '$_POST[email]', '$_POST[telefone]', '$_POST[curso]', '$_POST[identificacao_racial]', '$_POST[evento]')";
+       
 ?>
- 
-
-
+</html>
